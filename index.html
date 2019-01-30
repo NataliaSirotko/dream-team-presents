@@ -1,0 +1,121 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h2 style="text-transform: capitalize; color: lightgreen; font-family: Impact, Arial, sans-serif; letter-spacing: 3px">Архитектура Беларуси</h2>
+					<p style="text-align: right; font-family: Impact, Arial, sans-serif; letter-spacing: 3px; color: blue">by Dream Team 43</p>
+				</section>
+				<section>
+					<img src="images/сайт1.png">
+				</section>
+				<section>
+					<h3 style="color: lightgreen">Используемые готовые компоненты</h3>
+				</section>
+				<section>
+					<p class="fragment"><a href="https://www.npmjs.com/package/react-search-input">Поиск</a></p>
+					<p class="fragment"><a href="https://reactjsexample.com/a-vertical-timeline-component-for-react/">Таймлайн</a></p>
+					<p class="fragment"><a href="https://benhowell.github.io/react-grid-gallery/">Галерея</a></p>
+					<p class="fragment"><a href="https://github.com/react-bootstrap/react-overlays">Оверлэй для видео</a></p>
+					<p class="fragment"><a href="https://www.npmjs.com/package/react-yandex-maps">Карты Яндекса</a></p>
+				</section>
+				<section>
+					<h3 style=" color: lightgreen">Сложности</h3>
+				</section>
+				<section>
+					<section><p class="fragment">1. Реализация переключения языка. </p>
+					<p class="fragment">Было принято решение отказаться от использование библиотеки i18n, т.к. в документации нету четких примеров переводов на 3 языка. Неизвестно что было бы нас ждало.</p></section>
+					<section><p class="fragment">РЕШЕНИЕ: придумали свою реализацию переключения языка, с использованием json файла как основу для хранения данных, где во главе иерархии стоит язык, а компонента App хранит стейт, который передается всем компонентам, которые в свою очередь хранят переводы своего интерфейса.</p></section>
+					<section>
+						<pre>
+							<code>
+								import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import { Timeline, TimelineItem } from 'vertical-timeline-component-for-react';
+import { Modal } from 'react-overlays';
+import { YMaps, Map, GeoObject } from 'react-yandex-maps';
+import Gallery from 'react-grid-gallery';
+
+const interfaceTranslator = [
+  {
+    en: {
+      bio: 'Biography',
+      list: 'List of works',
+      gallery: 'Gallery',
+      video: 'Video',
+      map: 'Place of work',
+    },
+  },
+  {
+    ru: {
+      bio: 'Биография',
+      list: 'Список работ',
+      gallery: 'Галерея',
+      video: 'Видео',
+      map: 'Место деятельности',
+    },
+  },
+  {
+    by: {
+      bio: 'Біяграфія',
+      list: 'Спіс работ',
+      gallery: 'Галерэя',
+      video: 'Відэа',
+      map: 'Месца дзейнасці',
+    },
+  },
+];
+							</code>
+						</pre>
+					</section>
+				</section>
+				<section>
+					<p class="fragment">2. Страх появления конфликтов в гите. Конретно проблема состояла в вопросе о том, какую правильно использовать структуру веток.</p>
+				    <p class="fragment">РЕШЕНИЕ: Было принято решение работать в разных ветках, + четкое разделение труда позволило избежать конфликтов.</p>
+				</section>
+				<section data-background-image="images/baloons.gif" alt="baloons">
+					<h2 style="color: black">Спасибо за внимание!</h2>
+				</section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
