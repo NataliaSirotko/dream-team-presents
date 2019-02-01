@@ -29,9 +29,6 @@
 					<p style="text-align: right; font-family: Impact, Arial, sans-serif; letter-spacing: 3px; color: blue">by Dream Team 43</p>
 				</section>
 				<section>
-					<img src="images/сайт1.png">
-				</section>
-				<section>
 					<h3 style="color: lightgreen">Используемые готовые компоненты</h3>
 				</section>
 				<section>
@@ -50,14 +47,7 @@
 					<section><p class="fragment">РЕШЕНИЕ: придумали свою реализацию переключения языка, с использованием json файла как основу для хранения данных, где во главе иерархии стоит язык, а компонента App хранит стейт, который передается всем компонентам, которые в свою очередь хранят переводы своего интерфейса.</p></section>
 					<section>
 						<pre>
-							<code>
-								import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
-import { Timeline, TimelineItem } from 'vertical-timeline-component-for-react';
-import { Modal } from 'react-overlays';
-import { YMaps, Map, GeoObject } from 'react-yandex-maps';
-import Gallery from 'react-grid-gallery';
-
+							<code>							
 const interfaceTranslator = [
   {
     en: {
